@@ -85,7 +85,7 @@ function show(showData){
                 <td>${showData[i].product_Category}</td>
                 <td>${showData[i].product_Description}</td>
                 <td><button class="btn btn-primary py-0 px-3" onclick="editItem(${i})">Edit</button></td>
-                <td><button class="btn btn-danger py-0 px-3" data-bs-toggle="modal" data-bs-target="#exampleModal2">Delete</button></td>
+                <td><button class="btn btn-danger py-0 px-3" onclick="deleteItem(${i})">Delete</button></td>
               </tr>
         `
     }
@@ -174,7 +174,6 @@ function searchPro(){
      {
         list[i].productNewName = list[i].product_Name.toLowerCase().replace(search.value, `<span class="text-primary fw-bolder">${search.value}</span>`)
         searchList.push(list[i])
-        // console.log(searchList)
         show(searchList)
      } else if(searchList == 0){
        tbody.innerHTML=`<td colspan=7><p class="bg-danger fs-4 text-center mt-3">Sorry not founded any product include this word : <span class="text-warning fw-bolder"> ${search.value}</span></p> </td>`
@@ -184,7 +183,7 @@ function searchPro(){
 }
 //***valid Name function****/
 function validName(){
-    var regex = /^[A-Z][a-z]{3,6}$/;
+    var regex = /^[A-Z][a-z]{2,5}$/;
     var isValid = regex.test(product_Name.value);
     function validNameIn(){
         if(isValid){
